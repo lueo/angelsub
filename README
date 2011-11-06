@@ -1,0 +1,3 @@
+A magic subtitles manager which can:
+    1. Download missing subtitles from shooter.cn
+    2. Auto convert Chinese subtitles between GBK, Big5 and UTF8
