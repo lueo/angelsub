@@ -1,0 +1,7 @@
+.directory
+.DS_Store
+*.pyc
+*.pyo
+*[-\.]swp
+.coverage
+.tox
