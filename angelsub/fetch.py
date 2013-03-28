@@ -8,23 +8,12 @@ import struct
 import io
 import random
 import time
-import ipdb
 import logging
 import requests
 import hashlib
 from path import path
 
 logging.basicConfig(level=logging.DEBUG)
-
-Class VideoFile(object):
-    ```
-    Class for video file
-    ```
-
-    def __init(self, filepath):
-        self.filepath = path(filepath)
-        self.size = self.filepath.getsize()
-        self.shash = self.gen_filehash()
 
 def genShash(filepath):
     result = []
@@ -178,7 +167,7 @@ def main():
         try:
             subs = fetchSubtitle(f)
         except (requests.ConnectionError, OSError, IOError), why:
-            logging.Error(why)
+            logging.error(why)
 
     filename, ext = f.basename().splitext() 
     dirname = f.dirname()

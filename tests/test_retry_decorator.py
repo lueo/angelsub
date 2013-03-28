@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 
-from retry import retries, example_exc_handler
+from angelsub.decorators import retries, example_exc_handler
 import nose.tools
 from nose.tools import *
 

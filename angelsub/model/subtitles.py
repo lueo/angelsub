@@ -21,7 +21,6 @@ class Subtitles(object):
     '''
     def __init__(self, VideoFile):
         self.video_file = VideoFile
-        self.local_subs = None
 
     @lazyprop
     def shooter_hash(self):
@@ -39,6 +38,22 @@ class Subtitles(object):
                 f.seek(_)
                 result.append(hashlib.md5(f.read(4096)).hexdigest())
         return ';'.join(result)
+
+    @lazyprop
+    def local_subs(self):
+        fp = self.video_file.filepath
+        namebase = fp.namebase
+        dirname = fp.dirname()
+        ext_list = ['.srt', '.sub', '.txt', '.ass']
+
+        subs = []
+        for f in dirname.listdir():
+            if f.ext in ext_list:
+                ratio = difflib.SequenceMatcher(None, f.namebase, namebase).ratio()
+                if ratio > 0.9:
+                    subs.append(f)
+
+        return subs
 
     @lazyprop
     @retries(3, delay=2, backoff=2, exceptions=(requests.ConnectionError), hook=logggin_exe_handler)

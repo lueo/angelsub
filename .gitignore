@@ -5,3 +5,10 @@
 *[-\.]swp
 .coverage
 .tox
+
+# virtualenv
+bin/
+lib/
+lib64
+include/
+man/
